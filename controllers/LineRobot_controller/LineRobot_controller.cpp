@@ -11,8 +11,8 @@
 #include <webots/Motor.hpp>
 #include<webots/DistanceSensor.hpp>
 
-#define TIME_STEP 64;
-#define MAX_SPEED 6.28;//6.28 = 1 rotation per second
+#define TIME_STEP 64
+#define MAX_SPEED 6.28//6.28 = 1 rotation per second
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -54,7 +54,7 @@ double right_speed = MAX_SPEED;
 
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
-  while (robot->step(TIME_STEP != -1) {
+  while (robot->step(TIME_STEP) != -1) {
     // Read the sensors:
     double left_ir_val = left_ir->getValue();
     double right_ir_val = right_ir->getValue();
@@ -72,11 +72,11 @@ bool left_line = (4<left_ir_val) && (left_ir_val<16);
 bool right_line = (4<right_ir_val) && (right_ir_val<16);
 
 //se a linha esta na esquerda, vire esquerda
-if((left_ir_val > right_ir_val) && left_ir_val){
+if((left_ir_val > right_ir_val) && left_line){
   left_speed = MAX_SPEED * 0.30;
 }
 //se a linha esta na direita, vira direita
-if((right_ir_val > left_ir_val) && right_ir_val){
+else if((right_ir_val > left_ir_val) && right_line){
   right_speed = MAX_SPEED * 0.30;
 }
 
