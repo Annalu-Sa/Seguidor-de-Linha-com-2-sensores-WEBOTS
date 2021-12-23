@@ -1,12 +1,8 @@
 // File:          LineRobot_controller.cpp
 // Date: 15-23/12/2021
-// Description:
+// Description: Capacitação na modalidade Seguidor de Linha da equipe de robótica Minervabots
 // Author: Anna Luisa Sá dos Santos
-// Modifications:
 
-// You may need to add webots include files such as
-// <webots/DistanceSensor.hpp>, <webots/Motor.hpp>, etc.
-// and/or to add some other includes
 #include <webots/Robot.hpp>
 #include <webots/Motor.hpp>
 #include<webots/DistanceSensor.hpp>
@@ -14,16 +10,8 @@
 #define TIME_STEP 64
 #define MAX_SPEED 6.28//6.28 = 1 rotation per second
 
-// All the webots classes are defined in the "webots" namespace
 using namespace webots;
 
-// This is the main program of your controller.
-// It creates an instance of your Robot instance, launches its
-// function(s) and destroys it at the end of the execution.
-// Note that only one instance of Robot should be created in
-// a controller program.
-// The arguments of the main function can be specified by the
-// "controllerArgs" field of the Robot node
 int main(int argc, char **argv) {
   // create the Robot instance.
   Robot *robot = new Robot();
@@ -46,22 +34,11 @@ right_ir -> enable(TIME_STEP);
 double left_speed = MAX_SPEED;
 double right_speed = MAX_SPEED;
 
-  // You should insert a getDevice-like function in order to get the
-  // instance of a device of the robot. Something like:
-  //  Motor *motor = robot->getMotor("motorname");
-  //  DistanceSensor *ds = robot->getDistanceSensor("dsname");
-  //  ds->enable(timeStep);
-
-  // Main loop:
-  // - perform simulation steps until Webots is stopping the controller
   while (robot->step(TIME_STEP) != -1) {
-    // Read the sensors:
+
     double left_ir_val = left_ir->getValue();
     double right_ir_val = right_ir->getValue();
-    // Enter here functions to read sensor data, like:
-    //  double val = ds->getValue();
 
-    // Process sensor data here.
     left_speed = MAX_SPEED;
     right_speed = MAX_SPEED;
 
